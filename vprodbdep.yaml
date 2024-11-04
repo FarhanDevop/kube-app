@@ -40,7 +40,7 @@ spec:
           awsElasticBlockStore:
             volumeID: vol-0934856e8c4a304af
             fsType: ext4
-      initContainer:
+      initContainers:
         - name: busybox
           image: busybox:latest
           args: ["rm", "-rf", "/var/lib/mysql/lost+found"]
