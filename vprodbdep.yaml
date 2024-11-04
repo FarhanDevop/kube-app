@@ -15,24 +15,20 @@ spec:
         app: vprodb
     spec:
       containers:
-      - name: vprodb
-        image: devopsfarhan/vprofiledb
-        volumeMounts:
+        - name: vprodb
+          image: devopsfarhan/vprofiledb
+          volumeMounts:
           - mountPath: /var/lib/mysql
             name: vpro-db-data
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
-        ports:
-          - name: vprodb-port
-            containerPort: 3306
-        env:
-          - name: MYSQL_ROOT_PASSWORD
-            valueFrom:
+          ports:
+            - name: vprodb-port
+              containerPort: 3306
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
               secretKeyRef:
-                name: app-secret
-                key: db-pass
+                  name: app-secret
+                  key: db-pass
       nodeSelector:
         zone: us-east-1a
       volumes:
